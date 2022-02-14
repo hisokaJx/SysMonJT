@@ -353,6 +353,10 @@ float LinuxParser::CpuUtilization(int pid) {
 	seconds = sysUptime - (stol(_22) / HERTZ ); // (stol(_22) / HERTZ) is in seconds, same as sysUptime; 
 	if (seconds > 1) {
 	    cpu_usage = 100 * ((total_time / HERTZ) / seconds);
+	    myfile << "in if (seconds > 1)\n";
+	}
+	else {
+	    myfile << "did not enter if (seconds > 1)\n";
 	}
 	myfile << "PID: " << pid << "; total_time: " << total_time << "; seconds: " << seconds << "; cpu: " << cpu_usage << "\n";
     }

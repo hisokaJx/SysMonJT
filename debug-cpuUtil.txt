@@ -1,3 +1,4 @@
 inside LinuxParser::CpuUtilization(int pid)
- 4364 (bash) S 77 4364 4364 34820 4364 4210688 2791 9617 0 10 3 1 7 0 20 0 1 0 1004391
-PID: 4364; total_time: 11; seconds: 704; cpu: 0
+ 5150 (monitor) R 78 5150 78 34817 5150 4210688 313 0 0 0 20 16 0 0 20 0 1 0 1203416
+in if (seconds > 1)
+PID: 5150; total_time: 36; seconds: 40; cpu: 0

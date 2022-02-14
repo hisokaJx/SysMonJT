@@ -19,6 +19,11 @@ Processor& System::Cpu() {
     return cpu_;
 }
 
+// helper for process sort; borrowed from route_planner.cpp
+static bool Compare(Process p1, Process p2) {
+    return p1.CpuUtilization() < p2.CpuUtilization();
+}
+
 // TODO: Return a container composed of the system's processes
 vector<Process>& System::Processes() {
     // debug stuff
@@ -52,6 +57,9 @@ vector<Process>& System::Processes() {
 	Process this_proc{i, this_user, this_cpu, this_ram, this_uptime, this_cmd};
 	processes_.push_back(this_proc);
     }
+    
+    // sort process
+    std::sort(processes_.begin(), processes_.end(), Compare);
 
     myfile.close();//DEBUG
 
