@@ -1,0 +1,3 @@
+inside LinuxParser::CpuUtilization(int pid)
+ 4364 (bash) S 77 4364 4364 34820 4364 4210688 2791 9617 0 10 3 1 7 0 20 0 1 0 1004391
+PID: 4364; total_time: 11; seconds: 704; cpu: 0
