@@ -19,6 +19,7 @@ public:
     std::string Ram();                       // TODO: See src/process.cpp
     long int UpTime();                       // TODO: See src/process.cpp
     bool operator<(Process const& a) const;  // TODO: See src/process.cpp
+    /* bool operator<(Process const&, Process const&) const;  // TODO: See src/process.cpp */
 
 // FINISHED: Declare any necessary private members
 private:

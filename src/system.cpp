@@ -14,7 +14,7 @@ using std::size_t;
 using std::string;
 using std::vector;
 
-// TODO: Return the system's CPU
+// FINISHED: Return the system's CPU
 Processor& System::Cpu() {
     return cpu_;
 }
@@ -22,9 +22,10 @@ Processor& System::Cpu() {
 // helper for process sort; borrowed from route_planner.cpp
 static bool Compare(Process p1, Process p2) {
     return p1.CpuUtilization() < p2.CpuUtilization();
+    /* return std::stol(p1.Ram()) > std::stol(p2.Ram()); */
 }
 
-// TODO: Return a container composed of the system's processes
+// FINISHED: Return a container composed of the system's processes
 vector<Process>& System::Processes() {
     // debug stuff
     std::ofstream myfile;//DEBUG
@@ -50,7 +51,7 @@ vector<Process>& System::Processes() {
 	this_ram = LinuxParser::Ram(i);
 	this_cpu = LinuxParser::CpuUtilization(i);
 	myfile << "PID: " << i << "; User: " << this_user << "; this_uptime: " << this_uptime << "; ";//DEBUG
-	myfile << "CMD: " << this_cmd << "; " << "RAM: " << this_ram << "\n";
+	myfile << "CMD: " << this_cmd << "; " << "RAM: " << this_ram << "; ";
 	myfile << "CPU: " << this_cpu << "\n";
 	// get info about this process and assign to vector
 	/* Process::Process(int pid, std::string user, float cpu, std::string ram, long sec, std::string cmd) */

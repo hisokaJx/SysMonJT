@@ -330,10 +330,10 @@ float LinuxParser::CpuUtilization(int pid) {
     string line;
     string _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22;
 
-    long sysUptime = LinuxParser::UpTime();
-    long total_time{0};
-    long seconds{0};
-    long cpu_usage{0};
+    float sysUptime = LinuxParser::UpTime();
+    float total_time{0};
+    float seconds{0};
+    float cpu_usage{0};
     long HERTZ{sysconf(_SC_CLK_TCK)};
 
     std::ifstream filestream(kProcDirectory + to_string(pid) + kStatFilename);
@@ -347,12 +347,16 @@ float LinuxParser::CpuUtilization(int pid) {
 	    << " " <<_12 << " " <<_13 << " " <<_14 << " " <<_15 << " " <<_16 << " " <<_17 << " " <<_18 << " " <<_19 << " " <<_20 << " " <<_21 << " "
 	    <<_22 << "\n";
 	// in ticks
-	total_time = stol(_14) + stol(_15) + stol(_16) + stol(_17);
+	/* total_time = stol(_14) + stol(_15) + stol(_16) + stol(_17); */
+	total_time = stol(_14) + stol(_15);
 	// in sec
 	// this is == to "this_uptime" in LinuxParser::UpTime(int pid)
 	seconds = sysUptime - (stol(_22) / HERTZ ); // (stol(_22) / HERTZ) is in seconds, same as sysUptime; 
 	if (seconds > 1) {
-	    cpu_usage = 100 * ((total_time / HERTZ) / seconds);
+	    /* cpu_usage = 100 * ((total_time / HERTZ) / seconds); */
+	    /* cpu_usage = 100 * total_time / seconds; */
+	    /* cpu_usage = total_time / seconds; */
+	    cpu_usage = total_time / HERTZ / seconds;
 	    myfile << "in if (seconds > 1)\n";
 	}
 	else {
